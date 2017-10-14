@@ -1,27 +1,26 @@
 package sysm
 
 import (
-	"time"
-	"github.com/cloudfoundry/gosigar"
 	"encoding/json"
+	"github.com/cloudfoundry/gosigar"
+	"time"
 )
 
 const (
 	WatcherInterval = 500
-	DataChanSize = 10
 )
 
 //用于存储系统cpu和内存使用率
 type Info struct {
-	Cpu float64 `json:"cpu"`
-	Mem float64 `json:"mem"`
-	Time int64 	`json:"time"`
+	Cpu  float64 `json:"cpu"`
+	Mem  float64 `json:"mem"`
+	Time int64   `json:"time"`
 }
 
 type Watcher struct {
 	ticker *time.Ticker
-	stop chan bool
-	Data chan *[]byte
+	stop   chan bool
+	Data   chan *[]byte
 }
 
 //构造函数

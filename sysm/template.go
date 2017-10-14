@@ -1,9 +1,9 @@
 package sysm
 
 import (
-	"net/http"
 	"fmt"
 	"html/template"
+	"net/http"
 )
 
 func Template(w http.ResponseWriter, port int) {
@@ -120,7 +120,7 @@ window.onload = function() {
 	`, port, style)
 
 	var (
-		t *template.Template
+		t   *template.Template
 		err error
 	)
 	if t, err = template.New("template").Parse(templateStr); err != nil {
@@ -148,4 +148,3 @@ a {
 	margin-right: auto;
 }
 `
-
