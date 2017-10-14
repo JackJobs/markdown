@@ -88,16 +88,7 @@ func (s *HTTPServer) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	} else {
 		if strings.HasSuffix(path, ".md") || strings.HasSuffix(path, ".markdown") {
 			Template(w, path, s.port)
-		} else {
-			s.ServeStatic(w, path)
 		}
-	}
-}
-
-func (s *HTTPServer) ServeStatic(w http.ResponseWriter, path string) {
-	if stat, err := os.Stat(path); err == nil && stat.Mode().IsRegular() {
-		file, _ := os.Open(path)
-		io.Copy(w, file)
 	}
 }
 
