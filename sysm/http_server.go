@@ -82,7 +82,7 @@ func (s *HTTPServer) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		fmt.Println("accept connection")
 	} else if isWebsocketRequest(r) {
 		fmt.Println("websocket connect...")
-		NewWebsocket().Serve(w, r)
+		NewWebsocket().Serve(w, r) //创建websocket连接，发送数据
 	} else {
 		Template(w, s.port)
 	}
