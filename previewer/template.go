@@ -3,16 +3,16 @@ package previewer
 import (
 	"errors"
 	"fmt"
-	"text/template"
 	"net/http"
 	"os"
 	"os/user"
 	"path/filepath"
+	"text/template"
 )
 
 func Template(w http.ResponseWriter, filepath string, port int) {
 	var style string
-	if css, err := CustomCSS(); err != nil {
+	if css, err := CustomCSS(); err == nil {
 		style = *css
 	} else {
 		style = "<style>" + DefaultStyle + "</style>"
@@ -22,7 +22,7 @@ func Template(w http.ResponseWriter, filepath string, port int) {
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>%[1]</title>
+	<title>%[1]s</title>
     %[3]s
 </head>
 <body>
