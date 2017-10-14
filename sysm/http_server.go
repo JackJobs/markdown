@@ -57,7 +57,7 @@ func (s *HTTPServer) Listen() {
 		ticker := time.NewTicker(time.Microsecond * ListeningTestInterval)
 		for i := 0; i < MaxListeningTestCount; i++ {
 			<-ticker.C
-			resp, err := http.Get("http://localhost" + s.Addr() + "/ping")
+			resp, err := http.Get("http://0.0.0.0" + s.Addr() + "/ping")
 			if err == nil && resp.StatusCode == 200 {
 				result = true
 				break
